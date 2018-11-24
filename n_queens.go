@@ -3,10 +3,11 @@ package main
 import (
 	"fmt"
 	"math"
+	"os"
 	"strings"
 )
 
-const n = 13
+const n = 12
 
 var board [n]int
 
@@ -33,9 +34,9 @@ func gameboard() {
 func show() {
 
 	game = make([][]string, n)
-	for i, _ := range game {
+	for i := range game {
 		game[i] = make([]string, n)
-		for j, _ := range game[i] {
+		for j := range game[i] {
 			game[i][j] = "_"
 		}
 	}
@@ -47,9 +48,11 @@ func show() {
 
 	}
 	for i := 0; i < n; i++ {
-		fmt.Println(strings.Join(game[i], "|"), i)
+		//fmt.Println(strings.Join(game[i], "|"), i)
+		fmt.Fprintln(os.Stdout, strings.Join(game[i], "|"), i)
 	}
-	fmt.Println("------------------")
+	//fmt.Println("------------------------")
+	fmt.Fprintln(os.Stdout, "--------------------------")
 }
 
 func main() {
@@ -65,7 +68,7 @@ func main() {
 				j = 1
 
 				if i == n {
-					//show()
+					show()
 					i--
 					total++
 					j = board[i]
@@ -85,11 +88,9 @@ func main() {
 			board[i] = 0
 			i--
 			j = board[i]
-			//fmt.Println("oonja",i,j)
-		}
-		///*
 
-		//*/
+		}
+
 	}
 	fmt.Println(total)
 }
