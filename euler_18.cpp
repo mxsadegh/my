@@ -1,14 +1,14 @@
 
 /**
- * return 2D array isnot simple its very complicating
- * so we cant move part of this code to a function (return 2D array)for readabilty
+ * return 2D array is not simple its very complicating
+ * so we cant move part of this code to a function (return 2D array)for readable
  *
  */
 
-#include <algorithm>
+
 #include <iostream>
 #include <string>
-#include <iomanip>
+
 #include <vector>
 #include <sstream>
 #include <cstring>
@@ -47,8 +47,7 @@ while (getline(_stringstream,substr,'\n')){
     strInt++;
 }
 
-
-string elements[15][15];
+    int elements[15][15]={};
 
 string newsubstr;
 int j =0;
@@ -59,7 +58,7 @@ int j =0;
        j=0;
        while (getline(newstringstream, newsubstr,' ')){
 
-          elements[i][j]=newsubstr;
+          elements[i][j]=stoi(newsubstr);
            j++;
        }
       /**
@@ -69,8 +68,17 @@ int j =0;
        newstringstream.clear();
        newsubstr.clear();
    }
+   /**
+    * Very very celever methode i found on internet
+    * unfortunately i cant find a good solution meself :(
+    */
+    for (int i=13; i>=0;i--){
+        for (j=0;j<=i;j++){
+            (elements[i+1][j]>elements[i+1][j+1])?elements[i][j]+=elements[i+1][j]:elements[i][j]+=elements[i+1][j+1];
+        }
+    }
 
-    cout << elements[14][14];
+   cout << elements[0][0];
 
     return 0;
 
