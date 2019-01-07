@@ -5,14 +5,12 @@
  *
  */
 
-
 #include <iostream>
-#include <string>
-
-#include <vector>
 #include <sstream>
+#include <string>
+#include <vector>
 #include <cstring>
-
+#include <cmath>
 using namespace std;
 
 int main(){
@@ -36,49 +34,67 @@ int main(){
 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23)";
 
     stringstream _stringstream(strs);
+
+    int elements[15][15];
+
+    for (int l=0;l<15;l++) {
+        for (int n=0;n<l+1;n++) {
+            _stringstream >> elements[l][n];
+        }
+    }
+
+/**
+ * che ghadr be khatere code paein azyat shodam
+ * chee ghadr sade bood che ghadr sade bood
+ * kode bala ro az hal haye project euler gereftam
+ *
+ *
     string substr ;
     string str[15];
-int strInt=0;
-/**
- * mistake : extra getline
- */
-while (getline(_stringstream,substr,'\n')){
-    str[strInt]=substr;
-    strInt++;
-}
+    int strInt=0;
+ // mistake : extra getline
+
+    while (getline(_stringstream,substr,'\n')){
+        str[strInt]=substr;
+        strInt++;
+    }
 
     int elements[15][15]={};
 
-string newsubstr;
-int j =0;
+    string newsubstr;
+    int j =0;
     stringstream newstringstream;
-   for(int i = 0 ; i < 15 ; i++){
-      newstringstream<<str[i];
+    for(int i = 0 ; i < 15 ; i++){
+        newstringstream<<str[i];
 
-       j=0;
-       while (getline(newstringstream, newsubstr,' ')){
+        j=0;
+        while (getline(newstringstream, newsubstr,' ')){
 
-          elements[i][j]=stoi(newsubstr);
-           j++;
-       }
-      /**
-       * clear the stringstream by .clear()
-       * stream doesnt clear by flush
-       */
-       newstringstream.clear();
-       newsubstr.clear();
-   }
-   /**
-    * Very very celever methode i found on internet
-    * unfortunately i cant find a good solution meself :(
+            elements[i][j]=stoi(newsubstr);
+            j++;
+        }
+
+         // clear the stringstream by .clear()
+         // stream doesnt clear by flush
+
+        newstringstream.clear();
+        newsubstr.clear();
+    }
+
+
     */
+
+
+    // Very very celever methode i found on internet
+    // unfortunately i cant find a good solution meself :(
+    //
     for (int i=13; i>=0;i--){
-        for (j=0;j<=i;j++){
+        for (int j=0;j<=i;j++){
             (elements[i+1][j]>elements[i+1][j+1])?elements[i][j]+=elements[i+1][j]:elements[i][j]+=elements[i+1][j+1];
         }
     }
 
-   cout << elements[0][0];
+    cout << elements[0][0];
 
     return 0;
 
