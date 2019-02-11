@@ -7,4 +7,6 @@
 + الگوریتم cslr
 + competitive programming
 +حذف شده
+
 +stach pop
+لوکال
